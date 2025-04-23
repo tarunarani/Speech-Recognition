@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initail-scale=1.0">
+        <title>Speech to Text Recognition</title>
+        <link rel="stylesheet" href="speechstyle.css">
+    </head>
+    <body>
+        <div>
+            <h1>Speech Recognition</h1>
+            <h3>Audio to Text </h3>
+            <textarea rows="5" cols="50" placeholder="Your text message is here....." id="speechtotext"></textarea>
+            <button onclick="speech()">Click to speak</button>   
+        </div>
+        <script>
+            function speech(){
+                var recognition = new webkitSpeechRecognition();
+                recognition.lang="en-GB";
+                recognition.onresult=function(envet){
+                    console.log(event);
+                    document.getElementById("speechtotext").value = 
+                    envet.results[0][0].transcript;
+                }
+                recognition.start();
+            }
+        </script>
+    </body>
+</html>
